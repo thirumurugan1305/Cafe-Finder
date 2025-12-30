@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☕Cafe Finder - Free</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --bg: #fdfdfd;
+            --text: #333;
+            --btn-bg: #6f4e37;
+        }
+
+        body.dark-theme {
+            --bg: #1a1a1a;
+            --text: #f0f0f0;
+            --btn-bg: #8d6e63;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: var(--bg); color: var(--text); transition: 0.3s; }
+        .controls { margin-bottom: 15px; display: flex; gap: 10px; align-items: center; }
+        #search-input { flex-grow: 1; padding: 12px; border: 1px solid #ddd; border-radius: 6px; }
+        #map { height: 600px; width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        button { padding: 12px 24px; background: var(--btn-bg); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        
+        body.dark-theme .leaflet-tile-pane {
+            filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+        }
+        
+        body.dark-theme .leaflet-popup-content-wrapper,
+        body.dark-theme .leaflet-popup-tip {
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body id="main-body">
+    <div class="controls">
+        <input type="text" id="search-input" placeholder="Enter a city (e.g., Berlin)...">
+        <button onclick="searchLocation()">Find Cafes</button>
+        <button onclick="toggleTheme()" id="theme-btn">🌙 Dark Mode</button>
+    </div>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.osmbuildings.org/classic/0.2.2b/OSMBuildings-Leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
